@@ -10,11 +10,18 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Footprint } from "@/types";
+import { parseAsInteger, useQueryState } from "nuqs";
 import { UseFormReturn } from "react-hook-form";
 export function FootprintForm({
     form,
     onSubmit,
 }: { form: UseFormReturn<Footprint>; onSubmit: (values: Footprint) => void }) {
+    const [_, setName] = useQueryState("name");
+    const [__, setMonthlyIncomeAfterTax] = useQueryState(
+        "monthlyIncomeAfterTax",
+        parseAsInteger,
+    );
+
     return (
         <Form {...form}>
             <form
@@ -32,6 +39,10 @@ export function FootprintForm({
                                     className="border-[#C5C7CF]"
                                     placeholder="Jon"
                                     {...field}
+                                    onChange={(e) => {
+                                        field.onChange(e.target.value);
+                                        setName(e.target.value);
+                                    }}
                                 />
                             </FormControl>
                             <FormMessage />
@@ -52,6 +63,7 @@ export function FootprintForm({
                                     {...field}
                                     onChange={async (e) => {
                                         field.onChange(+e.target.value);
+                                        setMonthlyIncomeAfterTax(+e.target.value);
                                         const values = form.getValues();
                                         const isValid = await form.trigger();
 

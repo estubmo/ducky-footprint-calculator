@@ -1,5 +1,6 @@
 "use client";
 
+import { useQueryState, parseAsInteger } from "nuqs";
 import { FootprintForm } from "./footprint-form";
 import { FootprintResult } from "./footprint-result";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,16 +11,21 @@ import { footprintFormSchema } from "@/schemas";
 import { useState } from "react";
 
 export function FootprintContainer() {
+    const [name] = useQueryState("name");
+    const [monthlyIncomeAfterTax] = useQueryState(
+        "monthlyIncomeAfterTax",
+        parseAsInteger,
+    );
     const [annualFootprint, setAnnualFootprint] = useState<number | null>(null);
     const form = useForm<Footprint>({
         resolver: zodResolver(footprintFormSchema),
         defaultValues: {
-            name: "Jon",
-            monthlyIncomeAfterTax: 60000,
+            name: name || "Jon",
+            monthlyIncomeAfterTax: monthlyIncomeAfterTax || 60000,
         },
     });
 
-    const name = form.watch("name");
+    // const name = form.watch("name");
 
     async function onSubmit(values: Footprint) {
         const res = await calculateFootprint(values);
