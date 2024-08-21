@@ -26,7 +26,7 @@ export function FootprintForm({
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="flex flex-col space-y-8 w-[330px]"
+                className="flex flex-col space-y-8 md:min-w-[330px]"
             >
                 <FormField
                     control={form.control}

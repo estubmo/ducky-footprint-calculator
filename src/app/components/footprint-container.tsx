@@ -33,16 +33,16 @@ export function FootprintContainer() {
     }
 
     return (
-        <div className="flex min-h-screen w-full">
-            <div className="bg-[#CCEBEE] w-[614px] flex flex-col justify-center items-center">
-                <div className="flex flex-col justify-center items-center w-[330px] space-y-12">
+        <div className="flex flex-col md:flex-row min-h-screen w-full">
+            <div className="bg-[#CCEBEE] md:w-[614px] flex flex-col px-4 py-8 justify-center items-center">
+                <div className="flex flex-col justify-center items-center md:w-[330px] space-y-12">
                     <h1 className="text-[40px] text-[#004050] font-extralight leading-[54px]">
                         What’s your carbon footprint?
                     </h1>
                     <FootprintForm form={form} onSubmit={onSubmit} />
                 </div>
             </div>
-            <div className="flex w-full grow justify-center">
+            <div className="flex w-full py-8 px-4 grow justify-center">
                 <FootprintResult
                     name={name}
                     annualFootprint={annualFootprint}
