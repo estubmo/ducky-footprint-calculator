@@ -16,6 +16,7 @@ export function FootprintContainer() {
         "monthlyIncomeAfterTax",
         parseAsInteger,
     );
+
     const [annualFootprint, setAnnualFootprint] = useState<number | null>(null);
 
     const form = useForm<Footprint>({
@@ -43,7 +44,7 @@ export function FootprintContainer() {
             </div>
             <div className="flex w-full py-8 px-4 grow justify-center">
                 <FootprintResult
-                    name={name || ""}
+                    name={name}
                     annualFootprint={annualFootprint}
                     formIsValid={form.formState.isValid}
                 />
