@@ -17,6 +17,7 @@ export function FootprintContainer() {
         parseAsInteger,
     );
     const [annualFootprint, setAnnualFootprint] = useState<number | null>(null);
+
     const form = useForm<Footprint>({
         resolver: zodResolver(footprintFormSchema),
         defaultValues: {
@@ -24,8 +25,6 @@ export function FootprintContainer() {
             monthlyIncomeAfterTax: monthlyIncomeAfterTax || 60000,
         },
     });
-
-    // const name = form.watch("name");
 
     async function onSubmit(values: Footprint) {
         const res = await calculateFootprint(values);
@@ -44,7 +43,7 @@ export function FootprintContainer() {
             </div>
             <div className="flex w-full py-8 px-4 grow justify-center">
                 <FootprintResult
-                    name={name}
+                    name={name || ""}
                     annualFootprint={annualFootprint}
                     formIsValid={form.formState.isValid}
                 />
