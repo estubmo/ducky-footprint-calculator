@@ -14,7 +14,7 @@ export function FootprintContainer() {
     const form = useForm<Footprint>({
         resolver: zodResolver(footprintFormSchema),
         defaultValues: {
-            name: "John",
+            name: "Jon",
             monthlyIncomeAfterTax: 60000,
         },
     });
@@ -29,7 +29,12 @@ export function FootprintContainer() {
     return (
         <div className="flex min-h-screen w-full">
             <div className="bg-[#CCEBEE] w-[614px] flex flex-col justify-center items-center">
-                <FootprintForm form={form} onSubmit={onSubmit} />
+                <div className="flex flex-col justify-center items-center w-[330px] space-y-12">
+                    <h1 className="text-[40px] text-[#004050] font-extralight leading-[54px]">
+                        What’s your carbon footprint?
+                    </h1>
+                    <FootprintForm form={form} onSubmit={onSubmit} />
+                </div>
             </div>
             <div className="flex w-full grow justify-center">
                 <FootprintResult name={name} annualFootprint={annualFootprint} />

@@ -17,7 +17,10 @@ export function FootprintForm({
 }: { form: UseFormReturn<Footprint>; onSubmit: (values: Footprint) => void }) {
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="flex flex-col space-y-8 w-[330px]"
+            >
                 <FormField
                     control={form.control}
                     name="name"
@@ -25,7 +28,11 @@ export function FootprintForm({
                         <FormItem>
                             <FormLabel>Name</FormLabel>
                             <FormControl>
-                                <Input placeholder="shadcn" {...field} />
+                                <Input
+                                    className="border-[#C5C7CF]"
+                                    placeholder="Jon"
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -38,13 +45,19 @@ export function FootprintForm({
                         <FormItem>
                             <FormLabel>Monthly income of the household after tax</FormLabel>
                             <FormControl>
-                                <Input placeholder="shadcn" {...field} />
+                                <Input
+                                    className="border-[#C5C7CF]"
+                                    placeholder="60,000"
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                <Button className="font-light bg-[#008290] text-white" type="submit">
+                    Calculate footprint
+                </Button>
             </form>
         </Form>
     );
