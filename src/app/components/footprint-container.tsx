@@ -23,7 +23,6 @@ export function FootprintContainer() {
 
     async function onSubmit(values: Footprint) {
         const res = await calculateFootprint(values);
-
         setAnnualFootprint(res.totalCo2Kg);
     }
 
@@ -38,7 +37,11 @@ export function FootprintContainer() {
                 </div>
             </div>
             <div className="flex w-full grow justify-center">
-                <FootprintResult name={name} annualFootprint={annualFootprint} />
+                <FootprintResult
+                    name={name}
+                    annualFootprint={annualFootprint}
+                    formIsValid={form.formState.isValid}
+                />
             </div>
         </div>
     );

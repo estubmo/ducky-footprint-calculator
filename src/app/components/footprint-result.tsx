@@ -6,11 +6,12 @@ import { numberWithComma } from "@/utils";
 export function FootprintResult({
     name,
     annualFootprint,
-}: { name: string; annualFootprint: number | null }) {
+    formIsValid,
+}: { name: string; annualFootprint: number | null; formIsValid: boolean }) {
     return (
         <div className="flex flex-col items-center justify-center text-[#004050] text-2xl font-extralight">
             <div className="w-[330] flex flex-col items-start justify-center space-y-6">
-                {name && annualFootprint && (
+                {formIsValid && name && annualFootprint && (
                     <>
                         <h2>Hi {name}!</h2>
 

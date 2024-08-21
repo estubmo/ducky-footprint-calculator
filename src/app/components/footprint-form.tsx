@@ -50,6 +50,15 @@ export function FootprintForm({
                                     placeholder="60,000"
                                     type="number"
                                     {...field}
+                                    onChange={async (e) => {
+                                        field.onChange(+e.target.value);
+                                        const values = form.getValues();
+                                        const isValid = await form.trigger();
+
+                                        if (isValid) {
+                                            onSubmit(values);
+                                        }
+                                    }}
                                 />
                             </FormControl>
                             <FormMessage />
