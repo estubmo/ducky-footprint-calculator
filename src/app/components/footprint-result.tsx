@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import EarthIcon from "/public/assets/Earth.svg";
+import { numberWithComma } from "@/utils";
 
 export function FootprintResult({
     name,
@@ -19,7 +20,7 @@ export function FootprintResult({
                             </p>
                             <div className="flex items-center space-x-2">
                                 <div className="text-5xl font-bold">
-                                    {Math.round(annualFootprint)}
+                                    {numberWithComma(Math.round(annualFootprint))}
                                 </div>
                                 <div>kgCO₂e</div>
                             </div>
@@ -32,7 +33,7 @@ export function FootprintResult({
                             </p>
                             <div className="flex items-center space-x-2">
                                 <div className="text-5xl font-bold">
-                                    {Math.round(annualFootprint / 365.24)}
+                                    {numberWithComma(Math.round(annualFootprint / 365.24))}
                                 </div>
                                 <div>kgCO₂e</div>
                             </div>

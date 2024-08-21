@@ -22,6 +22,5 @@ export async function calculateFootprint(values: Footprint) {
         },
     );
     const data = await res.json();
-    console.log(data);
     return data;
 }

@@ -23,6 +23,7 @@ export function FootprintContainer() {
 
     async function onSubmit(values: Footprint) {
         const res = await calculateFootprint(values);
+
         setAnnualFootprint(res.totalCo2Kg);
     }
 

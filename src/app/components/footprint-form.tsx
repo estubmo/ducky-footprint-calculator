@@ -48,6 +48,7 @@ export function FootprintForm({
                                 <Input
                                     className="border-[#C5C7CF]"
                                     placeholder="60,000"
+                                    type="number"
                                     {...field}
                                 />
                             </FormControl>
