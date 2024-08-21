@@ -9,25 +9,12 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { calculateFootprint } from "../actions";
-import { useForm } from "react-hook-form";
 import { Footprint } from "@/types";
-import { footprintFormSchema } from "@/schemas";
-
-export function FootprintForm() {
-    const form = useForm<Footprint>({
-        resolver: zodResolver(footprintFormSchema),
-        defaultValues: {
-            name: "John",
-            monthlyIncomeAfterTax: 60000,
-        },
-    });
-
-    async function onSubmit(values: Footprint) {
-        const res = await calculateFootprint(values);
-    }
-
+import { UseFormReturn } from "react-hook-form";
+export function FootprintForm({
+    form,
+    onSubmit,
+}: { form: UseFormReturn<Footprint>; onSubmit: (values: Footprint) => void }) {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
