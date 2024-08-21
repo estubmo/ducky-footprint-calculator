@@ -18,17 +18,21 @@ export function FootprintContainer() {
             monthlyIncomeAfterTax: 60000,
         },
     });
+
     const name = form.watch("name");
+
     async function onSubmit(values: Footprint) {
         const res = await calculateFootprint(values);
+        setAnnualFootprint(res.totalCo2Kg);
     }
+
     return (
         <div className="flex min-h-screen w-full">
             <div className="bg-[#CCEBEE] w-[614px] flex flex-col justify-center items-center">
                 <FootprintForm form={form} onSubmit={onSubmit} />
             </div>
             <div className="flex w-full grow justify-center">
-                <FootprintResult name={name} />
+                <FootprintResult name={name} annualFootprint={annualFootprint} />
             </div>
         </div>
     );
